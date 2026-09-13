@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action -->
+    <record id="action_wasm_partner" model="ir.actions.act_window">
+        <field name="name">شركاء النجاح / Our Partners</field>
+        <field name="res_model">wasm.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                إضافة شريك جديد إلى قائمة شركاء النجاح
+            </p>
+            <p>
+                يمكنك هنا إضافة وتعديل وتغيير شعارات شركاء النجاح وروبط مواقعهم الإلكترونية الخارجية التي تظهر في الشريط المتحرك بالموقع.
+            </p>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_wasm_partner_tree" model="ir.ui.view">
+        <field name="name">wasm.partner.tree</field>
+        <field name="model">wasm.partner</field>
+        <field name="arch" type="xml">
+            <list string="شركاء النجاح" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="logo" widget="image" class="oe_avatar"/>
+                <field name="website_url" widget="url"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_wasm_partner_form" model="ir.ui.view">
+        <field name="name">wasm.partner.form</field>
+        <field name="model">wasm.partner</field>
+        <field name="arch" type="xml">
+            <form string="بيانات شريك النجاح">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <field name="logo" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="مثال: Wyndham Hotels &amp; Resorts"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="بيانات الشريك والرابط">
+                            <field name="website_url" widget="url" placeholder="https://www.wyndhamhotels.com"/>
+                            <field name="sequence"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group string="خيارات الشعار والوسائط">
+                            <field name="logo_url" placeholder="https://example.com/logo.png"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="وصف الشريك / Description">
+                            <field name="description" placeholder="إضافة وصف أو ملاحظات إضافية حول الشريك..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_wasm_partner_kanban" model="ir.ui.view">
+        <field name="name">wasm.partner.kanban</field>
+        <field name="model">wasm.partner</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="active">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="logo"/>
+                <field name="logo_url"/>
+                <field name="website_url"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex flex-column align-items-center p-3 text-center border rounded shadow-sm bg-white" style="height: 100%;">
+                            <div class="mb-2" style="height: 70px; display: flex; align-items: center; justify-content: center;">
+                                <t t-if="record.logo.raw_value">
+                                    <img t-att-src="kanban_image('wasm.partner', 'logo', record.id.raw_value)" style="max-height: 60px; max-width: 130px; object-fit: contain;" alt="Logo"/>
+                                </t>
+                                <t t-elif="record.logo_url.raw_value">
+                                    <img t-att-src="record.logo_url.raw_value" style="max-height: 60px; max-width: 130px; object-fit: contain;" alt="Logo"/>
+                                </t>
+                                <t t-else="">
+                                    <i class="fa fa-building fa-3x text-muted"></i>
+                                </t>
+                            </div>
+                            <h5 class="fw-bold mb-1">
+                                <field name="name"/>
+                            </h5>
+                            <t t-if="record.website_url.raw_value">
+                                <a t-att-href="record.website_url.raw_value" target="_blank" class="small text-primary">
+                                    <i class="fa fa-external-link me-1"></i>زيارة الموقع
+                                </a>
+                            </t>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action -->
+    <record id="action_wasm_testimonial" model="ir.actions.act_window">
+        <field name="name">آراء العملاء / Client Testimonials</field>
+        <field name="res_model">wasm.testimonial</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                إضافة تقييم/رأي جديد للعملاء
+            </p>
+            <p>
+                يمكنك هنا إضافة وتعديل وحذف تقييمات العملاء والتحكم في ظهورها وتقييمات النجوم والنصوص التي تظهر في قسم آراء العملاء بالموقع.
+            </p>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_wasm_testimonial_tree" model="ir.ui.view">
+        <field name="name">wasm.testimonial.tree</field>
+        <field name="model">wasm.testimonial</field>
+        <field name="arch" type="xml">
+            <list string="آراء العملاء" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="role_or_project"/>
+                <field name="rating"/>
+                <field name="feedback"/>
+                <field name="image" widget="image" class="oe_avatar"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_wasm_testimonial_form" model="ir.ui.view">
+        <field name="name">wasm.testimonial.form</field>
+        <field name="model">wasm.testimonial</field>
+        <field name="arch" type="xml">
+            <form string="بيانات رأي/تقييم العميل">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="مثال: Eng. Khalid Al-Otaibi"/>
+                        </h1>
+                        <h4 class="text-muted">
+                            <field name="role_or_project" placeholder="مثال: Riyadh Commercial Tower"/>
+                        </h4>
+                    </div>
+                    <group>
+                        <group string="بيانات التقييم والرتبة">
+                            <field name="rating"/>
+                            <field name="sequence"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group string="نص الرأي / Client Review Feedback">
+                        <field name="feedback" placeholder="أدخل نص رأي/تقييم العميل بالكامل هنا..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_wasm_testimonial_kanban" model="ir.ui.view">
+        <field name="name">wasm.testimonial.kanban</field>
+        <field name="model">wasm.testimonial</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="rating">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="role_or_project"/>
+                <field name="rating"/>
+                <field name="feedback"/>
+                <field name="image"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click p-3 shadow-sm rounded border bg-white mb-2">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="flex-shrink-0">
+                                    <t t-if="record.image.raw_value">
+                                        <img t-att-src="kanban_image('wasm.testimonial', 'image', record.id.raw_value)" alt="Client Avatar" class="rounded-circle border" style="width: 50px; height: 50px; object-fit: cover;"/>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center fw-bold" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                            <t t-out="record.name.raw_value and record.name.raw_value[0] or '★'"/>
+                                        </div>
+                                    </t>
+                                </div>
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <h6 class="mb-0 fw-bold text-dark"><field name="name"/></h6>
+                                    <small class="text-muted d-block"><field name="role_or_project"/></small>
+                                    <div class="text-warning small my-1">
+                                        <span class="badge bg-warning text-dark fw-bold"><i class="fa fa-star me-1" title="Rating"/> <field name="rating"/></span>
+                                    </div>
+                                    <p class="mb-0 text-muted small text-truncate"><field name="feedback"/></p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

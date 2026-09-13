@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Services -->
+        <record id="service_civil" model="wasm.service">
+            <field name="name">Modern building systems</field>
+            <field name="sequence">1</field>
+            <field name="icon">fa-building</field>
+            <field name="category">civil</field>
+            <field name="short_description">Advanced modern construction tech, glass facades, prefab steel framing, and turnkey fitouts.</field>
+            <field name="detailed_description"><![CDATA[
+                <p>Our Modern Building Systems services include:</p>
+                <ul>
+                    <li>Modern construction technologies, modular structures, and prefab steel framing.</li>
+                    <li>Architectural glass curtain walls and reinforced aluminum facades.</li>
+                    <li>Steel trusses and heavy industrial building frameworks.</li>
+                </ul>
+            ]]></field>
+        </record>
+
+        <record id="service_mep" model="wasm.service">
+            <field name="name">Electromechanical systems</field>
+            <field name="sequence">2</field>
+            <field name="icon">fa-bolt</field>
+            <field name="category">mep</field>
+            <field name="short_description">Design, supply, and installation of power grids, mechanical infrastructure, and sanitary networks.</field>
+            <field name="detailed_description"><![CDATA[
+                <p>Comprehensive MEP Services:</p>
+                <ul>
+                    <li>Cable trays, main distribution panels, and power grid wiring.</li>
+                    <li>Civil defense certified fire protection, alarms, and suppression systems.</li>
+                    <li>Water supply piping, drainage infrastructure, and smart pumping stations.</li>
+                </ul>
+            ]]></field>
+        </record>
+
+        <record id="service_hvac" model="wasm.service">
+            <field name="name">Smart building systems</field>
+            <field name="sequence">3</field>
+            <field name="icon">fa-cogs</field>
+            <field name="category">hvac</field>
+            <field name="short_description">Building automation, smart control panels, security systems, and early warning technology.</field>
+        </record>
+
+        <record id="service_finishing" model="wasm.service">
+            <field name="name">Alternative energy solutions</field>
+            <field name="sequence">4</field>
+            <field name="icon">fa-sun-o</field>
+            <field name="category">finishing</field>
+            <field name="short_description">Photovoltaic solar energy systems and energy optimization solutions for commercial sectors.</field>
+        </record>
+
+        <!-- Official Company Profile Projects (From Company Profile PDF) -->
+        <record id="project_ritz_carlton" model="wasm.project">
+            <field name="name">King Abdulaziz International Conference Center &amp; The Ritz-Carlton Hall</field>
+            <field name="sequence">1</field>
+            <field name="project_type">commercial</field>
+            <field name="state">completed</field>
+            <field name="location">Riyadh, Kingdom of Saudi Arabia</field>
+            <field name="client_name">The Ritz-Carlton / Royal Protocols</field>
+            <field name="area">85000</field>
+            <field name="description">Executed a comprehensive renovation for the landmark King Abdulaziz International Conference Center &amp; The Ritz-Carlton Conference Hall in Riyadh, including full-scale architectural upgrades, advanced MEP integration, fire protection, and low current systems.</field>
+        </record>
+
+        <record id="project_qirwan_kitchen" model="wasm.project">
+            <field name="name">Qirwan Central Kitchen, Riyadh (Tiara Group)</field>
+            <field name="sequence">2</field>
+            <field name="project_type">commercial</field>
+            <field name="state">completed</field>
+            <field name="location">Riyadh - Qirwan District</field>
+            <field name="client_name">Tiara Group</field>
+            <field name="area">18000</field>
+            <field name="description">Design &amp; Built for all Civil, Mechanical, Electrical, Interior &amp; Exterior Finishing Works for the central culinary complex.</field>
+        </record>
+
+        <record id="project_sudair_factories" model="wasm.project">
+            <field name="name">Sudair Industrial &amp; Business City (86 Factories Infrastructure)</field>
+            <field name="sequence">3</field>
+            <field name="project_type">infrastructure</field>
+            <field name="state">completed</field>
+            <field name="location">Sudair Industrial City</field>
+            <field name="client_name">MODON Industrial Authority</field>
+            <field name="area">140000</field>
+            <field name="description">Complete MEP &amp; Infrastructure Development Works for 86 Factories in Sudair Industrial Park.</field>
+        </record>
+
+        <record id="project_intercontinental_taif" model="wasm.project">
+            <field name="name">Intercontinental Hotel Taif</field>
+            <field name="sequence">4</field>
+            <field name="project_type">commercial</field>
+            <field name="state">completed</field>
+            <field name="location">Taif, Kingdom of Saudi Arabia</field>
+            <field name="client_name">Intercontinental Hotels</field>
+            <field name="area">32000</field>
+            <field name="description">Design &amp; Built for Emergency Staircases, structural safety enhancements, and architectural upgrades.</field>
+        </record>
+
+        <record id="project_mina_hospital" model="wasm.project">
+            <field name="name">Mina Emergency Hospital, Makkah</field>
+            <field name="sequence">5</field>
+            <field name="project_type">mep</field>
+            <field name="state">completed</field>
+            <field name="location">Mina, Makkah Almukarramah</field>
+            <field name="client_name">Ministry of Health</field>
+            <field name="area">25000</field>
+            <field name="description">Supply and installation of Fire Fighting, Fire Suppression Systems, and Medical Gas Networks for Mina Emergency Hospital.</field>
+        </record>
+
+        <record id="project_janadriyah_towers" model="wasm.project">
+            <field name="name">AL Janadriyah Towers Hotel &amp; Hospitality Hotel</field>
+            <field name="sequence">6</field>
+            <field name="project_type">commercial</field>
+            <field name="state">completed</field>
+            <field name="location">Makkah Almukarramah</field>
+            <field name="client_name">AL Janadriyah Hospitality Group</field>
+            <field name="area">42000</field>
+            <field name="description">Full MEP, Safety, and Interior Architecture Refurbishment for Hotel Towers in Makkah.</field>
+        </record>
+
+        <record id="project_sofitel_makkah" model="wasm.project">
+            <field name="name">Rawdat AL Shorouk Hotel &amp; Sofitel Makkah Hotel</field>
+            <field name="sequence">7</field>
+            <field name="project_type">commercial</field>
+            <field name="state">completed</field>
+            <field name="location">Makkah Almukarramah</field>
+            <field name="client_name">Sofitel Hotels &amp; Resorts</field>
+            <field name="area">38000</field>
+            <field name="description">Electro-mechanical installations, central HVAC cooling networks, and fire safety systems.</field>
+        </record>
+
+        <record id="project_ramada_meridien" model="wasm.project">
+            <field name="name">Ramada Makkah Hotel &amp; Le Meridien Makkah Hotel</field>
+            <field name="sequence">8</field>
+            <field name="project_type">commercial</field>
+            <field name="state">completed</field>
+            <field name="location">Makkah Almukarramah</field>
+            <field name="client_name">Ramada &amp; Le Meridien Hotels</field>
+            <field name="area">46000</field>
+            <field name="description">Comprehensive upgrade of plumbing, electrical grids, fire alarms, and central HVAC systems.</field>
+        </record>
+
+        <!-- Partners -->
+        <record id="partner_imdad" model="wasm.partner">
+            <field name="name">IMDAD</field>
+            <field name="sequence">10</field>
+            <field name="logo_url">https://arfa-sa.com/web/image/1592-650a892f/Untitled-2.png?height=256</field>
+            <field name="website_url">https://imdad.sa</field>
+        </record>
+
+        <record id="partner_wyndham" model="wasm.partner">
+            <field name="name">Wyndham Hotels</field>
+            <field name="sequence">20</field>
+            <field name="logo_url">https://www.wyndhamhotels.com/content/dam/images/global/logos/ra_bywynd_rgb_solid.svg</field>
+            <field name="website_url">https://www.wyndhamhotels.com</field>
+        </record>
+
+        <record id="partner_alzaidy" model="wasm.partner">
+            <field name="name">Al Zaidy ReadyMix</field>
+            <field name="sequence">30</field>
+            <field name="logo_url">https://alzaidy-readymix.com/wp-content/uploads/2017/04/logo.png</field>
+            <field name="website_url">https://alzaidy-readymix.com</field>
+        </record>
+
+        <record id="partner_moh" model="wasm.partner">
+            <field name="name">Ministry of Health (MOH)</field>
+            <field name="sequence">40</field>
+            <field name="logo_url">https://www.moh.gov.sa/_layouts/15/MOH/Internet/New/images/logo.png</field>
+            <field name="website_url">https://www.moh.gov.sa</field>
+        </record>
+
+        <record id="partner_momrah" model="wasm.partner">
+            <field name="name">MOMRAH</field>
+            <field name="sequence">50</field>
+            <field name="logo_url">https://momah.gov.sa/themes/custom/momrah-theme/logo.svg</field>
+            <field name="website_url">https://momah.gov.sa</field>
+        </record>
+
+        <record id="partner_sec" model="wasm.partner">
+            <field name="name">Saudi Electricity Company (SEC)</field>
+            <field name="sequence">60</field>
+            <field name="logo_url">https://www.se.com.sa/-/media/sec-jss-app/Footer/sec-logo-mini.ashx?iar=0&amp;hash=6701A601A222AEAD1C4F2A25FEEF82C3</field>
+            <field name="website_url">https://www.se.com.sa</field>
+        </record>
+
+        <record id="partner_energy" model="wasm.partner">
+            <field name="name">Saudi Energy</field>
+            <field name="sequence">70</field>
+            <field name="logo_url">https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2WlXR0yr4C_HQEzHYpqPaBhlQPhJWBFZjjeL5xbUo7g&amp;s=10</field>
+            <field name="website_url">https://www.energy.gov.sa</field>
+        </record>
+
+        <record id="partner_gea" model="wasm.partner">
+            <field name="name">General Entertainment Authority (GEA)</field>
+            <field name="sequence">80</field>
+            <field name="logo_url">https://www.gea.gov.sa///media/fblntnyl/gea-logo-1.png</field>
+            <field name="website_url">https://www.gea.gov.sa</field>
+        </record>
+
+        <record id="partner_spl" model="wasm.partner">
+            <field name="name">Saudi Post (SPL)</field>
+            <field name="sequence">90</field>
+            <field name="logo_url">https://splonline.com.sa/Design/images/Logo.svg</field>
+            <field name="website_url">https://splonline.com.sa</field>
+        </record>
+
+        <!-- Testimonials (Client Reviews) -->
+        <record id="testimonial_khalid" model="wasm.testimonial">
+            <field name="name">Eng. Khalid Al-Otaibi</field>
+            <field name="role_or_project">Riyadh Commercial Tower</field>
+            <field name="rating">5</field>
+            <field name="sequence">10</field>
+            <field name="feedback">Professional execution of complex MEP engineering systems and structural framing adhering strictly to SBC standards and tight project deadlines.</field>
+        </record>
+
+        <record id="testimonial_abdullah" model="wasm.testimonial">
+            <field name="name">Abdullah Al-Ghamdi</field>
+            <field name="role_or_project">Residential Fitout Owner</field>
+            <field name="rating">5</field>
+            <field name="sequence">20</field>
+            <field name="feedback">Exceptional quality management, transparent technical reporting, and flawless interior architecture execution.</field>
+        </record>
+
+        <record id="testimonial_sultan" model="wasm.testimonial">
+            <field name="name">Sultan Al-Dossary</field>
+            <field name="role_or_project">Industrial Facility Client</field>
+            <field name="rating">5</field>
+            <field name="sequence">30</field>
+            <field name="feedback">High safety standards, heavy machinery availability, and top-quality turnkey interior architecture execution.</field>
+        </record>
+    </data>
+</odoo>

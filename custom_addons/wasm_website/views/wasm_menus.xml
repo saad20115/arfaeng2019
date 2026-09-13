@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_wasm_root"
+              name="عرفة الهندسية"
+              sequence="1"/>
+
+    <!-- Submenus -->
+    <menuitem id="menu_wasm_quote_request"
+              name="طلبات عروض الأسعار"
+              parent="menu_wasm_root"
+              action="action_wasm_quote_request"
+              sequence="10"/>
+
+    <menuitem id="menu_wasm_project"
+              name="معرض المشاريع"
+              parent="menu_wasm_root"
+              action="action_wasm_project"
+              sequence="20"/>
+
+    <menuitem id="menu_wasm_service"
+              name="الخدمات الإنشائية"
+              parent="menu_wasm_root"
+              action="action_wasm_service"
+              sequence="30"/>
+
+    <menuitem id="menu_wasm_news"
+              name="الأخبار والمقالات (News)"
+              parent="menu_wasm_root"
+              action="action_wasm_news"
+              sequence="32"/>
+
+    <menuitem id="menu_wasm_gallery"
+              name="معرض الصور والوسائط (Gallery)"
+              parent="menu_wasm_root"
+              action="action_wasm_gallery"
+              sequence="34"/>
+
+    <menuitem id="menu_wasm_partner"
+              name="شركاء النجاح (Partners)"
+              parent="menu_wasm_root"
+              action="action_wasm_partner"
+              sequence="35"/>
+
+    <menuitem id="menu_wasm_testimonial"
+              name="آراء العملاء (Testimonials)"
+              parent="menu_wasm_root"
+              action="action_wasm_testimonial"
+              sequence="36"/>
+
+    <menuitem id="menu_wasm_site_config"
+              name="وسائط وتكوين الموقع"
+              parent="menu_wasm_root"
+              action="action_wasm_site_config_singleton"
+              sequence="40"/>
+</odoo>

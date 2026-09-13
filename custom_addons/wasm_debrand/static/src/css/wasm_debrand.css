@@ -1,0 +1,88 @@
+/* ============================================================
+   WASM DEBRANDING & WHITE LABEL CSS OVERRIDES
+   ============================================================ */
+
+/* 1. Hide Brand Promotion Banner, Powered by Odoo Links, and Default Copyright Name */
+.o_brand_promotion,
+#o_footer_copyright_information,
+.o_footer_copyright_information,
+.o_footer_copyright_name,
+a[href*="odoo.com/app/website"],
+a[href*="odoo.com"],
+.o_powered_by,
+footer .o_brand_promotion,
+div:has(> a[href*="odoo.com"]) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+}
+
+/* 2. FORCE 100% PERFECT CENTER ALIGNMENT FOR FOOTER & LANGUAGE SELECTOR IN BOTH LTR & RTL MODES */
+.o_footer_copyright,
+html[dir="rtl"] .o_footer_copyright,
+html[lang*="ar"] .o_footer_copyright,
+body.rtl .o_footer_copyright {
+    text-align: center !important;
+}
+
+.o_footer_copyright .container,
+.o_footer_copyright .row,
+html[dir="rtl"] .o_footer_copyright .container,
+html[dir="rtl"] .o_footer_copyright .row,
+html[lang*="ar"] .o_footer_copyright .container,
+html[lang*="ar"] .o_footer_copyright .row {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.o_footer_copyright [class*="col-"],
+.o_footer_copyright .col-sm,
+.o_footer_copyright .col-md,
+.o_footer_copyright .col-lg,
+html[dir="rtl"] .o_footer_copyright [class*="col-"],
+html[dir="rtl"] .o_footer_copyright .col-sm,
+html[dir="rtl"] .o_footer_copyright .col-md,
+html[dir="rtl"] .o_footer_copyright .col-lg,
+html[lang*="ar"] .o_footer_copyright [class*="col-"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.o_footer_copyright .js_language_selector,
+.o_footer_copyright .js_language_selector ul,
+.o_footer_copyright .js_language_selector div,
+.o_footer_copyright .js_language_selector .dropdown-menu,
+.o_footer_copyright .js_language_selector .list-inline,
+html[dir="rtl"] .o_footer_copyright .js_language_selector,
+html[dir="rtl"] .o_footer_copyright .js_language_selector ul,
+html[dir="rtl"] .o_footer_copyright .js_language_selector div,
+html[lang*="ar"] .o_footer_copyright .js_language_selector,
+html[lang*="ar"] .o_footer_copyright .js_language_selector ul,
+html[lang*="ar"] .o_footer_copyright .js_language_selector div {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+    width: auto !important;
+}

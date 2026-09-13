@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View for Projects -->
+    <record id="view_wasm_project_form" model="ir.ui.view">
+        <field name="name">wasm.project.form</field>
+        <field name="model">wasm.project</field>
+        <field name="arch" type="xml">
+            <form string="المشروع - عرفة الهندسية">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="in_progress,completed"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </header>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar" style="max-width: 120px; max-height: 120px;"/>
+                    <div class="oe_title">
+                        <label for="name" string="اسم المشروع"/>
+                        <h1><field name="name" placeholder="مثال: برج وسم التجاري والمالي"/></h1>
+                    </div>
+                    <group>
+                        <group string="تفاصيل المشروع والموقع">
+                            <field name="project_type"/>
+                            <field name="location"/>
+                            <field name="client_name"/>
+                            <field name="video_url" placeholder="رابط فيديو MP4 أو YouTube للمشروع"/>
+                        </group>
+                        <group string="المساحة والتاريخ والحالة">
+                            <field name="area"/>
+                            <field name="completion_date"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="الوصف المختصر (يظهر في الكروت)" name="desc">
+                            <field name="description" placeholder="وصف موجز للمشروع يظهر في كروت المعرض..."/>
+                        </page>
+                        <page string="التفاصيل الهندسية والفنية" name="details">
+                            <field name="detailed_description" placeholder="شرح هندسي مفصل لمحتوى المشروع والمخرجات..."/>
+                        </page>
+                        <page string="معرض صور وفيديوهات المشروع" name="gallery">
+                            <field name="attachment_ids" widget="many2many_binary" string="رفع صور وفيديوهات إضافية للمشروع"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View for Projects (Click row to open Form view) -->
+    <record id="view_wasm_project_tree" model="ir.ui.view">
+        <field name="name">wasm.project.tree</field>
+        <field name="model">wasm.project</field>
+        <field name="arch" type="xml">
+            <list string="معرض المشاريع">
+                <field name="sequence" widget="handle"/>
+                <field name="name" decoration-bf="1"/>
+                <field name="project_type"/>
+                <field name="location"/>
+                <field name="state" widget="badge" decoration-success="state == 'completed'" decoration-warning="state == 'in_progress'"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View for Projects -->
+    <record id="view_wasm_project_kanban" model="ir.ui.view">
+        <field name="name">wasm.project.kanban</field>
+        <field name="model">wasm.project</field>
+        <field name="arch" type="xml">
+            <kanban sample="1">
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex align-items-center p-2 gap-3">
+                            <field name="image" widget="image" style="width: 80px; height: 80px; object-fit: cover;" class="rounded shadow-sm"/>
+                            <div class="flex-grow-1">
+                                <div class="fw-bold fs-6 mb-1 text-dark">
+                                    <field name="name"/>
+                                </div>
+                                <div class="text-muted small mb-1">
+                                    <i class="fa fa-map-marker me-1 text-warning"/> <field name="location"/>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <field name="state" widget="badge" decoration-success="state == 'completed'" decoration-warning="state == 'in_progress'"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Search View for Projects -->
+    <record id="view_wasm_project_search" model="ir.ui.view">
+        <field name="name">wasm.project.search</field>
+        <field name="model">wasm.project</field>
+        <field name="arch" type="xml">
+            <search string="البحث في المشاريع">
+                <field name="name"/>
+                <field name="location"/>
+                <filter string="المشاريع المعطلة / الأرشيف" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for Projects -->
+    <record id="action_wasm_project" model="ir.actions.act_window">
+        <field name="name">معرض المشاريع - عرفة الهندسية</field>
+        <field name="res_model">wasm.project</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_wasm_project_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                إضافة مشروع جديد لمعرض أعمال عرفة الهندسية
+            </p>
+            <p>
+                يمكنك إضافة وتحديث وإيقاف تنشيط المشاريع لتظهر أو تختفي من معرض الموقع الرسمي.
+            </p>
+        </field>
+    </record>
+
+</odoo>

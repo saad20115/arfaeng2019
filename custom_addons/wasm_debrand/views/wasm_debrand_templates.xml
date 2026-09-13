@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ============================================================
+         WASM DEBRANDING & WHITE LABEL TEMPLATES
+         ============================================================ -->
+
+    <!-- 1. Remove Base Web Brand Promotion (Backend / Portal / Footer) -->
+    <template id="debrand_web_brand_promotion" inherit_id="web.brand_promotion" name="Wasm Web Brand Promotion Debrand" priority="999">
+        <xpath expr="//div[hasclass('o_brand_promotion')]" position="replace">
+            <div class="o_brand_promotion d-none" style="display: none !important; opacity: 0; visibility: hidden; height: 0; margin: 0; padding: 0;"/>
+        </xpath>
+    </template>
+
+    <!-- 2. Remove Brand Promotion Message ("Powered by Odoo - #1 Open Source eCommerce") -->
+    <template id="debrand_brand_promotion_message" inherit_id="web.brand_promotion_message" name="Wasm Brand Promotion Message Debrand" priority="999">
+        <xpath expr="//t[@t-out]" position="replace">
+            <span class="d-none" style="display: none !important;"/>
+        </xpath>
+    </template>
+
+    <!-- 3. Remove Default Footer Copyright Name ("حقوق النشر © اسم الشركة" / "Copyright © Company name") -->
+    <template id="debrand_footer_copyright_company_name" inherit_id="website.footer_copyright_company_name" name="Wasm Footer Copyright Debrand" priority="999">
+        <xpath expr="//span[hasclass('o_footer_copyright_name')]" position="replace">
+            <span class="o_footer_copyright_name d-none" style="display: none !important; opacity: 0; height: 0; width: 0; margin: 0; padding: 0;"/>
+        </xpath>
+    </template>
+
+    <!-- 4. Center Align Language Selector Container in Footer for LTR & RTL -->
+    <template id="debrand_footer_copyright_center" inherit_id="website.layout" name="Wasm Footer Copyright Center" priority="999">
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('row')]" position="attributes">
+            <attribute name="class" add="justify-content-center text-center mx-auto w-100" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('row')]/div" position="attributes">
+            <attribute name="class" remove="text-sm-end text-md-end text-end text-sm-start text-md-start text-start me-auto ms-auto float-end float-start" add="text-center mx-auto d-flex justify-content-center align-items-center w-100" separator=" "/>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Register Website Pages for Website Builder -->
+        <record id="page_about_us" model="website.page">
+            <field name="name">عن الشركة</field>
+            <field name="url">/about</field>
+            <field name="view_id" ref="wasm_website.about_page_template"/>
+            <field name="is_published">True</field>
+        </record>
+
+        <record id="page_services" model="website.page">
+            <field name="name">خدماتنا</field>
+            <field name="url">/services</field>
+            <field name="view_id" ref="wasm_website.services_page_template"/>
+            <field name="is_published">True</field>
+        </record>
+
+        <record id="page_projects" model="website.page">
+            <field name="name">مشاريعنا</field>
+            <field name="url">/projects</field>
+            <field name="view_id" ref="wasm_website.projects_page_template"/>
+            <field name="is_published">True</field>
+        </record>
+
+        <record id="page_contact_team" model="website.page">
+            <field name="name">الأقسام والفرق</field>
+            <field name="url">/contact-team</field>
+            <field name="view_id" ref="wasm_website.contact_team_page_template"/>
+            <field name="is_published">True</field>
+        </record>
+
+        <record id="page_quote" model="website.page">
+            <field name="name">طلب عرض سعر</field>
+            <field name="url">/quote</field>
+            <field name="view_id" ref="wasm_website.quote_page_template"/>
+            <field name="is_published">True</field>
+        </record>
+
+        <record id="page_location" model="website.page">
+            <field name="name">موقعنا</field>
+            <field name="url">/location</field>
+            <field name="view_id" ref="wasm_website.location_page_template"/>
+            <field name="is_published">True</field>
+        </record>
+    </data>
+</odoo>

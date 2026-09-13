@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_wasm_quote_request_form" model="ir.ui.view">
+        <field name="name">wasm.quote.request.form</field>
+        <field name="model">wasm.quote.request</field>
+        <field name="arch" type="xml">
+            <form string="طلب عرض سعر">
+                <header>
+                    <button name="action_under_review" type="object" string="قيد المراجعة" class="btn-primary" invisible="state != 'new'"/>
+                    <button name="action_contacted" type="object" string="تم التواصل" class="btn-info" invisible="state != 'under_review'"/>
+                    <button name="action_pricing" type="object" string="بدء التسعير وحصر الكميات" class="btn-warning" invisible="state != 'contacted'"/>
+                    <button name="action_offer_sent" type="object" string="تم إرسال العرض" class="btn-success" invisible="state != 'pricing'"/>
+                    <button name="action_contracted" type="object" string="تم التعاقد والتحويل لمشروع" class="btn-success" invisible="state != 'offer_sent'"/>
+                    <button name="action_closed" type="object" string="إغلاق الطلب" class="btn-secondary" invisible="state in ('closed', 'contracted')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,under_review,contacted,pricing,offer_sent,contracted,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="بيانات العميل التواصلية">
+                            <field name="customer_name"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="email" widget="email"/>
+                            <field name="customer_type" widget="radio"/>
+                            <field name="department" widget="badge"/>
+                        </group>
+                        <group string="تفاصيل المشروع والخدمات">
+                            <field name="project_type"/>
+                            <field name="project_location"/>
+                            <field name="service_id"/>
+                            <field name="area"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="approx_budget" widget="monetary"/>
+                            <field name="expected_start_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="تفاصيل الطلب والمواصفات" name="details">
+                            <field name="details" placeholder="أدخل هنا أي شروط أو مواصفات خاصة بالمشروع..."/>
+                        </page>
+                        <page string="المخططات والملفات المرفقة" name="attachments">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                        <page string="ملاحظات المتابعة الداخلية" name="internal_notes">
+                            <field name="notes" placeholder="ملاحظات الفريق والتسعير والمتابعة..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_wasm_quote_request_tree" model="ir.ui.view">
+        <field name="name">wasm.quote.request.tree</field>
+        <field name="model">wasm.quote.request</field>
+        <field name="arch" type="xml">
+            <list string="طلبات عروض الأسعار" multi_edit="1">
+                <field name="name" decoration-bf="1"/>
+                <field name="customer_name"/>
+                <field name="phone"/>
+                <field name="customer_type" widget="badge"/>
+                <field name="project_type"/>
+                <field name="project_location"/>
+                <field name="department"/>
+                <field name="create_date" string="تاريخ الطلب"/>
+                <field name="state" widget="badge" decoration-info="state == 'new'" decoration-warning="state in ('under_review', 'pricing')" decoration-success="state in ('offer_sent', 'contracted')" decoration-muted="state == 'closed'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_wasm_quote_request_kanban" model="ir.ui.view">
+        <field name="name">wasm.quote.request.kanban</field>
+        <field name="model">wasm.quote.request</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_small_column">
+                <field name="name"/>
+                <field name="customer_name"/>
+                <field name="phone"/>
+                <field name="project_type"/>
+                <field name="project_location"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click p-2">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <strong class="text-primary"><field name="name"/></strong>
+                                <field name="customer_type" widget="badge"/>
+                            </div>
+                            <div class="fw-bold fs-6 mb-1"><field name="customer_name"/></div>
+                            <div class="text-muted small"><i class="fa fa-map-marker me-1" title="الموقع"></i> <field name="project_location"/></div>
+                            <div class="text-muted small"><i class="fa fa-building me-1" title="النوع"></i> <field name="project_type"/></div>
+                            <div class="mt-2 text-end">
+                                <field name="department" widget="badge"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_wasm_quote_request" model="ir.actions.act_window">
+        <field name="name">طلبات عروض الأسعار - شركة وسم</field>
+        <field name="res_model">wasm.quote.request</field>
+        <field name="view_mode">list,kanban,form,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                لا توجد طلبات عروض أسعار حتى الآن!
+            </p>
+            <p>
+                يتم استقبال الطلبات تلقائياً من النموذج الإلكتروني في الموقع أو إدخالها يدوياً هنا.
+            </p>
+        </field>
+    </record>
+</odoo>
