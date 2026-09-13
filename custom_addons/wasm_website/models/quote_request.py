@@ -203,10 +203,10 @@ class WasmQuoteRequest(models.Model):
                 }
                 try:
                     mail = self.env['mail.mail'].sudo().create(admin_mail_values)
-                    mail.send()
-                    _logger.info("Admin notification email sent for %s to %s", req.name, admin_target_email)
+                    # Removed .send() to allow async processing via Odoo mail queue
+                    _logger.info("Admin notification email queued for %s to %s", req.name, admin_target_email)
                 except Exception as e:
-                    _logger.error("Failed to send admin notification email for %s: %s", req.name, str(e))
+                    _logger.error("Failed to queue admin notification email for %s: %s", req.name, str(e))
 
             # 2. Customer Confirmation Email
             if site_config.enable_customer_confirmation_email and req.email:
@@ -250,10 +250,10 @@ class WasmQuoteRequest(models.Model):
                 }
                 try:
                     cust_mail = self.env['mail.mail'].sudo().create(cust_mail_values)
-                    cust_mail.send()
-                    _logger.info("Customer confirmation email sent for %s to %s", req.name, req.email)
+                    # Removed .send() to allow async processing via Odoo mail queue
+                    _logger.info("Customer confirmation email queued for %s to %s", req.name, req.email)
                 except Exception as e:
-                    _logger.error("Failed to send customer confirmation email for %s: %s", req.name, str(e))
+                    _logger.error("Failed to queue customer confirmation email for %s: %s", req.name, str(e))
 
     def action_under_review(self):
         return self.write({'state': 'under_review'})
