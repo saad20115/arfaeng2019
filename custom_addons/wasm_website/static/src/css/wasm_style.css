@@ -1896,33 +1896,44 @@ button[type="submit"].btn-warning:hover {
         min-height: auto !important;
         height: auto !important;
         max-height: none !important;
-        padding: 14px 12px !important;
+        padding: 10px 4px !important;
         margin: 0 auto 10px auto !important;
-        border-radius: 16px !important;
-        background: rgba(15, 23, 42, 0.45) !important;
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
     }
     .wasm-hero-title-main {
-        font-size: 1.3rem !important;
+        font-size: 1.4rem !important;
         line-height: 1.25 !important;
         margin-bottom: 4px !important;
         display: block !important;
+        color: #ffffff !important;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
     }
     .wasm-hero-subtitle {
-        font-size: 0.72rem !important;
-        padding: 3px 8px !important;
+        font-size: 0.75rem !important;
+        padding: 4px 10px !important;
         margin-top: 4px !important;
         display: inline-block !important;
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
     }
     .wasm-hero-lead {
-        font-size: 0.82rem !important;
-        margin-top: 6px !important;
-        line-height: 1.35 !important;
-        max-height: 3.8em !important;
-        overflow: hidden !important;
+        font-size: 0.88rem !important;
+        margin-top: 8px !important;
+        line-height: 1.4 !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95) !important;
+    }
+    .wasm-typewriter-content {
+        color: #ffffff !important;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95) !important;
     }
     .wasm-hero-action-block {
         margin-top: 8px !important;
