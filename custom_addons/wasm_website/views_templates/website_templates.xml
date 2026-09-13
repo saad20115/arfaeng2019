@@ -245,6 +245,92 @@
                     width: 100% !important;
                     margin-top: 16px !important;
                 }
+
+                /* Mobile Hero Transparent Box & Compact Buttons Override */
+                @media (max-width: 991.98px) {
+                    .wasm-hero-banner {
+                        padding-top: 10px !important;
+                        padding-bottom: 10px !important;
+                        min-height: auto !important;
+                    }
+                    .wasm-hero-text-block,
+                    .wasm-glass-card {
+                        min-height: auto !important;
+                        height: auto !important;
+                        max-height: none !important;
+                        padding: 8px 4px !important;
+                        margin: 0 auto 10px auto !important;
+                        border-radius: 0 !important;
+                        background: transparent !important;
+                        background-color: transparent !important;
+                        backdrop-filter: none !important;
+                        -webkit-backdrop-filter: none !important;
+                        border: none !important;
+                        box-shadow: none !important;
+                    }
+                    .wasm-hero-title-main {
+                        font-size: 1.35rem !important;
+                        line-height: 1.25 !important;
+                        margin-bottom: 4px !important;
+                        display: block !important;
+                        color: #ffffff !important;
+                        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95) !important;
+                    }
+                    .wasm-hero-subtitle {
+                        font-size: 0.75rem !important;
+                        padding: 4px 10px !important;
+                        margin-top: 4px !important;
+                        display: inline-block !important;
+                        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+                        color: #ffffff !important;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+                    }
+                    .wasm-hero-lead {
+                        font-size: 0.88rem !important;
+                        margin-top: 6px !important;
+                        line-height: 1.4 !important;
+                        color: #ffffff !important;
+                        font-weight: 700 !important;
+                        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95) !important;
+                    }
+                    .wasm-typewriter-content {
+                        color: #ffffff !important;
+                        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95) !important;
+                    }
+                    .wasm-hero-action-block {
+                        margin-top: 8px !important;
+                    }
+                    .wasm-hero-action-block .d-flex {
+                        flex-direction: row !important;
+                        flex-wrap: wrap !important;
+                        gap: 8px !important;
+                        max-width: 100% !important;
+                        justify-content: center !important;
+                    }
+                    .wasm-hero-btn,
+                    .wasm-hero-action-block a.btn {
+                        flex: 1 1 45% !important;
+                        min-width: 120px !important;
+                        max-width: 175px !important;
+                        padding: 8px 12px !important;
+                        font-size: 0.82rem !important;
+                        border-radius: 50px !important;
+                        text-align: center !important;
+                        margin: 0 !important;
+                        box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35) !important;
+                    }
+                    .wasm-hero-action-block a.btn svg,
+                    .wasm-hero-btn svg {
+                        width: 15px !important;
+                        height: 15px !important;
+                    }
+                    @media (max-width: 576px) {
+                        .wasm-hero-action-block a.btn:nth-child(2),
+                        .wasm-hero-btn:nth-child(2) {
+                            display: none !important;
+                        }
+                    }
+                }
             ]]>
             </style>
         </xpath>
