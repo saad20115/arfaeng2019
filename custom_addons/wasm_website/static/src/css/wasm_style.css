@@ -1885,40 +1885,47 @@ button[type="submit"].btn-warning:hover {
    ============================================================ */
 
 /* Mobile Devices & Small Screens (< 768px) */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
+    .wasm-hero-banner {
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        min-height: auto !important;
+    }
     .wasm-hero-text-block,
     .wasm-glass-card {
         min-height: auto !important;
         height: auto !important;
         max-height: none !important;
-        padding: 16px 14px !important;
-        margin: 0 8px 12px 8px !important;
+        padding: 14px 12px !important;
+        margin: 0 auto 10px auto !important;
         border-radius: 16px !important;
         background: rgba(15, 23, 42, 0.45) !important;
         backdrop-filter: blur(8px) !important;
         -webkit-backdrop-filter: blur(8px) !important;
         border: 1px solid rgba(255, 255, 255, 0.25) !important;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35) !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
     }
     .wasm-hero-title-main {
         font-size: 1.3rem !important;
-        line-height: 1.3 !important;
-        margin-bottom: 6px !important;
+        line-height: 1.25 !important;
+        margin-bottom: 4px !important;
+        display: block !important;
     }
     .wasm-hero-subtitle {
-        font-size: 0.75rem !important;
-        padding: 4px 10px !important;
+        font-size: 0.72rem !important;
+        padding: 3px 8px !important;
         margin-top: 4px !important;
+        display: inline-block !important;
     }
     .wasm-hero-lead {
-        font-size: 0.85rem !important;
-        margin-top: 8px !important;
-        line-height: 1.4 !important;
-        max-height: 4.2em !important;
+        font-size: 0.82rem !important;
+        margin-top: 6px !important;
+        line-height: 1.35 !important;
+        max-height: 3.8em !important;
         overflow: hidden !important;
     }
     .wasm-hero-action-block {
-        margin-top: 10px !important;
+        margin-top: 8px !important;
     }
     .wasm-hero-action-block .d-flex,
     .wasm-hero-buttons {
@@ -1932,18 +1939,26 @@ button[type="submit"].btn-warning:hover {
     .wasm-hero-btn,
     .wasm-hero-action-block a.btn {
         flex: 1 1 45% !important;
-        min-width: 125px !important;
-        padding: 10px 14px !important;
-        font-size: 0.85rem !important;
+        min-width: 120px !important;
+        max-width: 175px !important;
+        padding: 8px 12px !important;
+        font-size: 0.82rem !important;
         border-radius: 50px !important;
         text-align: center !important;
         margin: 0 !important;
-        box-shadow: 0 4px 15px rgba(217, 119, 6, 0.35) !important;
+        box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35) !important;
     }
-    /* Hide 3rd duplicate CTA on mobile screens to keep hero clean & reveal video background */
-    .wasm-hero-action-block a.btn:nth-child(3),
-    .wasm-hero-btn:nth-child(3) {
-        display: none !important;
+    .wasm-hero-action-block a.btn svg,
+    .wasm-hero-btn svg {
+        width: 15px !important;
+        height: 15px !important;
+    }
+    /* Hide 2nd button (Company Profile) on small mobile screens to reveal video background */
+    @media (max-width: 576px) {
+        .wasm-hero-action-block a.btn:nth-child(2),
+        .wasm-hero-btn:nth-child(2) {
+            display: none !important;
+        }
     }
     .wasm-section-title {
         font-size: 1.5rem !important;
@@ -1954,6 +1969,7 @@ button[type="submit"].btn-warning:hover {
     .wasm-stat-number {
         font-size: 1.5rem !important;
     }
+}
     /* Mobile Speed Dial Button Placement & Scale */
     .wasm-floating-speed-dial {
         bottom: 16px !important;
