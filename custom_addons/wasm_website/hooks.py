@@ -8,12 +8,7 @@ def post_init_hook(env):
     """
     WebsiteMenu = env['website.menu']
     
-    # 1. Unlink unwanted default menus (/shop, /jobs, /contactus) and children of top menus
-    top_menus = WebsiteMenu.search([('parent_id', '=', False)])
-    for tm in top_menus:
-        children = WebsiteMenu.search([('parent_id', '=', tm.id)])
-        children.unlink()
-        
+    # 1. Unlink specific unwanted default menus without destroying other apps' menus
     unwanted = WebsiteMenu.search([('url', 'in', ['/shop', '/jobs', '/contactus', '/blog', '/event'])])
     unwanted.unlink()
 
@@ -23,42 +18,41 @@ def post_init_hook(env):
         
     if top_menu:
         top_level_menus = [
-            ({'en_US': 'HOME'}, '/', 10),
-            ({'en_US': 'ABOUT US'}, '/about-us', 20),
-            ({'en_US': 'SERVICES'}, '#', 30),
-            ({'en_US': 'PROJECTS'}, '/projects', 40),
-            ({'en_US': 'OUR COMPANY'}, '/our-company', 50),
-            ({'en_US': 'NEWS'}, '/blog/2', 60),
-            ({'en_US': 'CONTACT US'}, '/contactus', 70),
+            ('الرئيسية', '/', 10),
+            ('عن الشركة', '/about', 20),
+            ('خدماتنا', '/services', 30),
+            ('مشاريعنا', '/projects', 40),
+            ('أقسام الشركة', '/contact-team', 50),
+            ('طلب عرض سعر', '/quote', 60),
+            ('تواصل معنا', '/contactus', 70),
         ]
 
         services_sub_menus = [
-            ({'en_US': 'Modern building systems'}, '/modern-building-systems', 10),
-            ({'en_US': 'Electromechanical systems'}, '/electromechanical-systems', 20),
-            ({'en_US': 'Smart building systems'}, '/smart-building-systems', 30),
-            ({'en_US': 'Alternative energy solutions'}, '/alternative-energy-solutions', 40),
-            ({'en_US': 'Fire protection & prevention systems'}, '/fire-protection-prevention-systems', 50),
-            ({'en_US': 'Medical Gas Systems'}, '/medical-gas-systems', 60),
-            ({'en_US': 'Infrastructure Development'}, '/infrastructure-development', 70),
-            ({'en_US': 'Planning & Construction'}, '/planning-construction', 80),
+            ('أنظمة البناء الحديثة', '/services#modern-building', 10),
+            ('أنظمة الكهروميكانيك MEP', '/services#mep', 20),
+            ('المباني الذكية BMS', '/services#smart-building', 30),
+            ('حلول الطاقة البديلة', '/services#energy', 40),
+            ('أنظمة الإطفاء والوقاية من الحريق', '/services#fire', 50),
+            ('أنظمة الغازات الطبية', '/services#medical-gas', 60),
+            ('تطوير البنية التحتية', '/services#infrastructure', 70),
         ]
         
         services_menu = False
-        for name_dict, url, seq in top_level_menus:
+        for name, url, seq in top_level_menus:
             m = WebsiteMenu.create({
-                'name': name_dict,
+                'name': name,
                 'url': url,
                 'sequence': seq,
                 'parent_id': top_menu.id,
                 'website_id': 1,
             })
-            if name_dict.get('en_US') == 'SERVICES':
+            if name == 'خدماتنا':
                 services_menu = m
 
         if services_menu:
-            for name_dict, url, seq in services_sub_menus:
+            for name, url, seq in services_sub_menus:
                 WebsiteMenu.create({
-                    'name': name_dict,
+                    'name': name,
                     'url': url,
                     'sequence': seq,
                     'parent_id': services_menu.id,

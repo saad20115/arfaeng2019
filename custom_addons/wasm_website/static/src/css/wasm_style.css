@@ -34,6 +34,18 @@
     --wasm-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ===================== ODOO DEBRANDING ===================== */
+.o_footer_copyright_name,
+footer .o_footer_copyright,
+div[data-name="o_footer_copyright"],
+.o_brand_promotion,
+a[href*="odoo.com"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
 /* ===================== GLOBAL FONT & BG ===================== */
 body,
 button,
